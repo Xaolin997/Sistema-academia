@@ -22,8 +22,6 @@ Todo o armazenamento é feito utilizando **LocalStorage**, permitindo que os dad
 
 # 📸 Demonstração
 
-> Adicione suas capturas de tela na pasta `docs/images`.
-
 |           Home            |           Treinos            |
 | :-----------------------: | :--------------------------: |
 | ![](docs/images/home.png) | ![](docs/images/treinos.png) |

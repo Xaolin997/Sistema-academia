@@ -1,63 +1,94 @@
 # 🏋️ A Academia
 
-```{=html}
-<p align="center">
-```
+> Organize seus treinos, acompanhe sua evolução e descubra novos
+> exercícios em uma única aplicação.
 
-Aplicação web para gerenciamento de treinos, consulta de exercícios e
-acompanhamento da evolução física.
-
-```{=html}
-</p>
-```
-
-```{=html}
-<p align="center">
-```
-
-![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![LocalStorage](https://img.shields.io/badge/Storage-LocalStorage-orange?style=for-the-badge)
-![ExerciseDB](https://img.shields.io/badge/API-ExerciseDB-green?style=for-the-badge)
+![ExerciseDB](https://img.shields.io/badge/API-ExerciseDB-success?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-orange?style=for-the-badge)
 
-```{=html}
-</p>
+---
+
+# 📖 Sobre
+
+**A Academia** é uma aplicação web desenvolvida em HTML, CSS e
+JavaScript puro com foco em praticantes de musculação.
+
+O sistema permite criar treinos personalizados, pesquisar exercícios
+através da ExerciseDB, organizar a rotina semanal, acompanhar o
+histórico de treinos e registrar o tempo de cada sessão.
+
+## ✨ Funcionalidades
+
+- Cadastro de treinos personalizados
+- Pesquisa de exercícios
+- Favoritar exercícios
+- Calendário semanal
+- Cronômetro de treino
+- Histórico de treinos
+- Persistência com LocalStorage
+- Interface responsiva
+
+---
+
+# 📸 Screenshots
+
+Crie a estrutura:
+
+```md
+![Banner](docs/images/banner.png)
+
+## Home
+
+![Home](docs/images/home.png)
+
+## Treinos
+
+![Treinos](docs/images/treinos.png)
+
+## Exercícios
+
+![Exercícios](docs/images/exercicios.png)
+
+## Favoritos
+
+![Favoritos](docs/images/favoritos.png)
+
+## Equipamentos
+
+![Equipamentos](docs/images/equipamentos.png)
 ```
 
 ---
 
-## 📖 Sobre
+# 🏗 Arquitetura
 
-**A Academia** é uma aplicação desenvolvida em HTML, CSS e JavaScript
-puro com foco em oferecer uma experiência simples para organização de
-treinos.
-
-O projeto permite criar treinos personalizados, pesquisar exercícios
-utilizando a ExerciseDB, favoritar exercícios, acompanhar um calendário
-semanal e registrar o histórico das sessões.
-
----
-
-# ✨ Funcionalidades
-
-- ✅ Cadastro de treinos
-- ✅ Adição e remoção de exercícios
-- ✅ Pesquisa por nome, equipamento e grupo muscular
-- ✅ Favoritos
-- ✅ Calendário semanal
-- ✅ Cronômetro durante o treino
-- ✅ Histórico de treinos
-- ✅ Toasts e modais personalizados
-- ✅ Persistência com LocalStorage
+```text
+                Usuário
+                   │
+                   ▼
+        HTML + CSS (Interface)
+                   │
+                   ▼
+          JavaScript (ES Modules)
+     ┌──────────┼──────────┐
+     │          │          │
+ Components    Search     API
+     │          │          │
+     └──────┬───┴──────┬───┘
+            │          │
+            ▼          ▼
+       LocalStorage ExerciseDB
+```
 
 ---
 
-# 📂 Estrutura
+# 📂 Estrutura do Projeto
 
 ```text
 academia/
-│
 ├── assets/
 ├── css/
 │   ├── exercicios/
@@ -65,7 +96,8 @@ academia/
 │   ├── inicio/
 │   ├── treinos/
 │   └── global.css
-│
+├── docs/
+│   └── images/
 ├── js/
 │   ├── api.js
 │   ├── components.js
@@ -78,7 +110,6 @@ academia/
 │   ├── exercicios.js
 │   ├── favoritos.js
 │   └── equipamentos.js
-│
 ├── index.html
 ├── exercicios.html
 ├── treinos.html
@@ -88,112 +119,132 @@ academia/
 
 ---
 
-# 🏗 Arquitetura
+# ⚙ Tecnologias
 
-    Usuário
-       │
-       ▼
-    Interface (HTML/CSS)
-       │
-       ▼
-    JavaScript
-       │
-       ├── Components
-       ├── Search
-       ├── Storage
-       ├── API
-       └── WeeklyCalendar
-       │
-       ▼
-    ExerciseDB API
-       │
-       ▼
-    LocalStorage
+Tecnologia Finalidade
 
 ---
 
-# 🧩 Principais módulos
-
-Arquivo Responsabilidade
-
----
-
-api.js Comunicação com a API
-storage.js Persistência de dados
-components.js Header, Sidebar, Footer, Cards, Toasts e Modais
-search.js Busca global
-weeklyCalendar.js Calendário reutilizável
-constants.js Constantes compartilhadas
+HTML5 Estrutura
+CSS3 Interface
+JavaScript ES Modules Lógica
+LocalStorage Persistência
+ExerciseDB Exercícios
 
 ---
 
-# 💾 LocalStorage
+# 🧩 Módulos
+
+## api.js
+
+Comunicação com a ExerciseDB.
+
+## storage.js
+
+Centraliza toda a persistência.
+
+Gerencia:
+
+- Treinos
+- Favoritos
+- Histórico
+- Calendário
+
+## components.js
+
+Componentes reutilizáveis:
+
+- Header
+- Sidebar
+- Footer
+- Cards
+- Toasts
+- Modais
+
+## search.js
+
+Responsável pelo sistema de busca.
+
+## weeklyCalendar.js
+
+Renderiza o calendário semanal reutilizado entre páginas.
+
+## constants.js
+
+Constantes compartilhadas.
+
+---
+
+# 📄 Páginas
+
+Página Descrição
+
+---
+
+index.html Dashboard inicial
+exercicios.html Pesquisa de exercícios
+treinos.html Gerenciamento de treinos
+favoritos.html Exercícios favoritos
+equipamentos.html Exercícios por equipamento
+
+---
+
+# 💾 Estrutura do LocalStorage
 
 Chave Conteúdo
 
 ---
 
-academia:treinos Treinos
-academia:favoritos Favoritos
-academia:historico Histórico
-academia:calendario Calendário
+academia:treinos Lista de treinos
+academia:favoritos Exercícios favoritos
+academia:historico Histórico de sessões
+academia:calendario Agenda semanal
 
 ---
 
-# 🚀 Executando
+# 🚀 Como executar
+
+```bash
+git clone <URL_DO_REPOSITORIO>
+cd academia
+```
 
 Utilize a extensão Live Server.
 
 Abra:
 
-- http://localhost:5502
+http://localhost:5502
 
 ---
 
-# 🗺 Roadmap
+# 🛣 Roadmap
 
 - [x] Sistema de treinos
-- [x] Calendário semanal
+- [x] Pesquisa de exercícios
 - [x] Favoritos
-- [x] Histórico
+- [x] Calendário
 - [x] Cronômetro
+- [x] Histórico
 - [ ] Login
-- [ ] Banco de dados
 - [ ] Backend
-- [ ] Sincronização em nuvem
+- [ ] Banco de dados
+- [ ] Sincronização
 - [ ] PWA
 - [ ] Aplicativo Android
+- [ ] Perfil
 - [ ] Estatísticas
-- [ ] Perfil do usuário
 
 ---
 
-# 📸 Screenshots
+# 💡 Melhorias Futuras
 
-# Home
-
-![Home](docs/images/home.png)
-
-# Treinos
-
-![Treinos](docs/images/treinos.png)
-
-# Exercícios
-
-![Exercícios](docs/images/exercicios.png)
-
-# Favoritos
-
-![Favoritos](docs/images/favoritos.png)
-
----
-
-# 🙏 Créditos
-
-- ExerciseDB API
-- HTML5
-- CSS3
-- JavaScript ES Modules
+- Autenticação
+- Compartilhamento de treinos
+- Backup em nuvem
+- Metas semanais
+- Gráficos de evolução
+- Modo escuro/claro
+- Notificações
 
 ---
 
@@ -201,5 +252,7 @@ Abra:
 
 **Kayo Moura**
 
-Projeto desenvolvido para estudos de Análise e Desenvolvimento de
-Sistemas.
+Projeto desenvolvido para estudos do curso de **Análise e
+Desenvolvimento de Sistemas**.
+
+Se este projeto foi útil, considere deixar uma ⭐ no repositório.

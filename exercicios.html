@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Academia — Exercícios</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/exercicios/exercicios.css" />
+</head>
+<body>
+
+  <header class="header"></header>
+  <aside class="sidebar"></aside>
+
+  <main>
+
+    <div class="exercicios-header">
+      <h1 class="exercicios-title">Exercícios</h1>
+      <p class="exercicios-sub">Explore mais de 1300 exercícios por categoria, equipamento e parte do corpo.</p>
+    </div>
+
+    <div class="filters-bar">
+      <span class="filters-bar__label">Filtrar por:</span>
+
+      <select id="filter-bodypart">
+        <option value="">Todas as partes do corpo</option>
+      </select>
+
+      <select id="filter-equipment">
+        <option value="">Todos os equipamentos</option>
+      </select>
+
+      <button class="filters-bar__reset" id="reset-filters">Limpar filtros</button>
+    </div>
+
+    <div id="categories-container"></div>
+
+  </main>
+
+  <footer class="footer">RODAPÉ</footer>
+
+  <script type="module" src="js/exercicios.js"></script>
+</body>
+</html>

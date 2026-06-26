@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Academia — Favoritos</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/exercicios/exercicios.css" />
+</head>
+
+<body>
+
+  <header class="header"></header>
+  <aside class="sidebar"></aside>
+
+  <main>
+    <div class="exercicios-header">
+      <h1 class="exercicios-title">Favoritos</h1>
+      <p class="exercicios-sub">Exercícios que você salvou para acessar rapidamente.</p>
+    </div>
+
+    <div class="category-grid" id="favoritos-grid"></div>
+  </main>
+
+  <footer class="footer">RODAPÉ</footer>
+
+  <script type="module">
+    import { FavoritosStorage } from './js/storage.js';
+    import { initLayout, buildExerciseCard, openExerciseModal } from './js/components.js';
+    import { initSearch } from './js/search.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initLayout("favoritos");
+      initSearch({ onSelect: openExerciseModal });
+
+      const grid = document.getElementById('favoritos-grid');
+      const favs = FavoritosStorage.getAll();
+
+      if (!favs.length) {
+        grid.innerHTML = `
+          <div style="grid-column:1/-1;text-align:center;padding:60px 24px;color:var(--clr-muted)">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity:.3;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            <p style="font-size:.9rem;margin-bottom:12px">Nenhum exercício favoritado ainda.</p>
+            <a href="exercicios.html" class="btn btn-primary">Explorar exercícios</a>
+          </div>`;
+        return;
+      }
+
+      favs.forEach(ex => {
+        const card = buildExerciseCard(ex, {
+          onClick: openExerciseModal,
+          onFav: (ex, added) => { if (!added) { card.remove(); } }
+        });
+        grid.appendChild(card);
+      });
+    });
+  </script>
+</body>
+
+</html>

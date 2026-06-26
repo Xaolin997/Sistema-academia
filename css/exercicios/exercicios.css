@@ -1,0 +1,168 @@
+.exercicios-header {
+  margin-bottom: 32px;
+}
+
+.exercicios-title {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  letter-spacing: .04em;
+  color: var(--clr-white);
+  margin-bottom: 6px;
+}
+
+.exercicios-sub {
+  font-size: .88rem;
+  color: var(--clr-muted);
+}
+
+.filters-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  align-items: center;
+}
+
+.filters-bar__label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+  margin-right: 4px;
+  white-space: nowrap;
+}
+
+.filters-bar select {
+  background: var(--clr-surface2);
+  border: 1px solid var(--clr-border);
+  color: var(--clr-text);
+  padding: 7px 30px 7px 12px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: .83rem;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: var(--transition);
+}
+.filters-bar select:focus { border-color: var(--clr-accent); }
+
+.filters-bar__reset {
+  background: none;
+  border: none;
+  color: var(--clr-muted);
+  font-size: .8rem;
+  cursor: pointer;
+  padding: 7px 12px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  margin-left: auto;
+}
+.filters-bar__reset:hover { color: var(--clr-text); background: var(--clr-surface2); }
+
+.category-section {
+  margin-bottom: 48px;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.category-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: .06em;
+  text-transform: capitalize;
+  color: var(--clr-white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.category-title::before {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 20px;
+  background: var(--clr-accent);
+  border-radius: 2px;
+}
+
+.category-count {
+  font-size: .72rem;
+  font-weight: 600;
+  background: var(--clr-surface2);
+  border: 1px solid var(--clr-border);
+  color: var(--clr-muted);
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: 8px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.load-more-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.no-results {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--clr-muted);
+}
+.no-results svg { margin-bottom: 12px; opacity: .3; }
+.no-results p { font-size: .9rem; }
+
+.skeleton-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.skeleton-img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: linear-gradient(90deg, var(--clr-surface2) 25%, var(--clr-border) 50%, var(--clr-surface2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+.skeleton-text {
+  margin: 10px 12px 12px;
+  height: 10px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--clr-surface2) 25%, var(--clr-border) 50%, var(--clr-surface2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+.skeleton-text.short { width: 60%; margin-top: 6px; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+@media (max-width: 1100px) {
+  .category-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 640px) {
+  .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .filters-bar { flex-wrap: wrap; }
+}

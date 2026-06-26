@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Academia — Equipamentos</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/exercicios/exercicios.css" />
+</head>
+
+<body>
+
+  <header class="header"></header>
+  <aside class="sidebar"></aside>
+
+  <main>
+    <div class="exercicios-header">
+      <h1 class="exercicios-title">Equipamentos</h1>
+      <p class="exercicios-sub">Encontre exercícios pelo equipamento disponível.</p>
+    </div>
+
+    <div id="equipamentos-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px">
+    </div>
+    <div id="exercicios-equip-container"></div>
+  </main>
+
+  <footer class="footer">RODAPÉ</footer>
+
+  <script type="module">
+    import ExerciseAPI from './js/api.js';
+    import { initLayout , buildExerciseCard, openExerciseModal, buildSkeletonCards } from './js/components.js';
+    import { initSearch } from './js/search.js';
+
+    const EQUIP_ICONS = {
+      'barbell': '🏋️', 'dumbbell': '💪', 'cable': '🔗', 'machine': '⚙️',
+      'body weight': '🤸', 'band': '🎗️', 'kettlebell': '🫙', 'ez barbell': '🏋️',
+      'smith machine': '🏗️', 'leverage machine': '⚙️', 'assisted': '🤝',
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      initLayout("equipamentos");
+      initSearch({ onSelect: openExerciseModal });
+
+      const grid = document.getElementById('equipamentos-grid');
+      const container = document.getElementById('exercicios-equip-container');
+
+      try {
+        const equipList = await ExerciseAPI.getEquipmentList();
+
+        grid.innerHTML = equipList.map(eq => `
+          <button class="card equip-btn" data-equip="${eq}" style="padding:24px 16px;text-align:center;cursor:pointer;border:none;color:var(--clr-text)">
+            <div style="font-size:2rem;margin-bottom:10px">${EQUIP_ICONS[eq] || '🏃'}</div>
+            <div style="font-size:.85rem;font-weight:600;text-transform:capitalize">${eq}</div>
+          </button>
+        `).join('');
+
+        grid.querySelectorAll('.equip-btn').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            grid.querySelectorAll('.equip-btn').forEach(b => b.style.borderColor = '');
+            btn.style.borderColor = 'var(--clr-accent)';
+
+            container.innerHTML = `
+              <div class="section-header">
+                <h2 class="section-title" style="text-transform:capitalize">${btn.dataset.equip}</h2>
+              </div>
+              <div class="category-grid" id="equip-grid"></div>
+            `;
+            const equipGrid = document.getElementById('equip-grid');
+            buildSkeletonCards(10).forEach(s => equipGrid.appendChild(s));
+
+            try {
+              const exercises = await ExerciseAPI.getExercisesByEquipment(btn.dataset.equip, 20);
+              equipGrid.innerHTML = '';
+              exercises.forEach(ex => {
+                const card = buildExerciseCard(ex, { onClick: openExerciseModal });
+                equipGrid.appendChild(card);
+              });
+            } catch {
+              equipGrid.innerHTML = '<p style="grid-column:1/-1;color:var(--clr-muted);text-align:center">Erro ao carregar.</p>';
+            }
+
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        });
+      } catch {
+        grid.innerHTML = '<p style="color:var(--clr-muted)">Erro ao carregar equipamentos.</p>';
+      }
+    });
+  </script>
+</body>
+
+</html>

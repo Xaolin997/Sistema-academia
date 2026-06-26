@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Academia — Início</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/inicio/inicio.css" />
+</head>
+<body>
+
+  <header class="header"></header>
+
+  <aside class="sidebar"></aside>
+
+  <main>
+
+    <section class="hero">
+      <img class="hero__bg" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80" alt="Academia" />
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <div class="hero__eyebrow">Bem-vindo de volta</div>
+        <h1 class="hero__title">Encontre o exercício ideal para <em>seu treino</em></h1>
+        <p class="hero__sub">+1300 exercícios para você evoluir com conhecimento.</p>
+        <a href="exercicios.html" class="btn btn-primary">Explorar exercícios</a>
+      </div>
+    </section>
+
+    <section style="margin-bottom:40px">
+      <div class="section-header">
+        <h2 class="section-title">Meus Treinos</h2>
+        <a href="treinos.html" class="ver-todos">ver todos →</a>
+      </div>
+      <div class="treinos-grid" id="meus-treinos"></div>
+    </section>
+
+    <section class="calendario">
+      <div class="section-header">
+        <h2 class="section-title">Calendário</h2>
+        <a href="treinos.html" class="ver-todos btn btn-outline" style="font-size:.78rem;padding:6px 14px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Editar
+        </a>
+      </div>
+      <div class="calendario-grid" id="calendario-grid"></div>
+    </section>
+
+    <section style="margin-bottom:40px">
+      <div class="section-header">
+        <h2 class="section-title">Exercícios em destaque</h2>
+        <a href="exercicios.html" class="ver-todos">ver todos →</a>
+      </div>
+      <div class="destaque-row">
+        <div class="destaque-exercicios">
+          <div class="destaque-grid" id="destaque-grid"></div>
+        </div>
+        <div class="motivacional">
+          <img class="motivacional__bg" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&q=80" alt="" />
+          <div class="motivacional__text">BE YOUR MIND</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-bottom:40px">
+      <div class="section-header">
+        <h2 class="section-title">Peito</h2>
+        <a href="exercicios.html" class="ver-todos">ver todos →</a>
+      </div>
+      <div class="destaque-grid" id="destaque-grid-2"></div>
+    </section>
+
+    <section class="prontos">
+      <div class="section-header">
+        <h2 class="section-title">Treinos prontos</h2>
+      </div>
+      <div class="prontos-grid">
+        <div class="pronto-card">
+          <img class="pronto-card__bg" src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80" alt="Hipertrofia" />
+          <div class="pronto-card__overlay"></div>
+          <div class="pronto-card__content">
+            <div class="pronto-card__tag">5x por semana</div>
+            <div class="pronto-card__name">Hipertrofia</div>
+            <div class="pronto-card__freq">Foco em ganho de massa muscular</div>
+            <button class="btn btn-primary" onclick="alert('Em breve!')">Ver treino</button>
+          </div>
+        </div>
+        <div class="pronto-card">
+          <img class="pronto-card__bg" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Emagrecimento" />
+          <div class="pronto-card__overlay"></div>
+          <div class="pronto-card__content">
+            <div class="pronto-card__tag">4x por semana</div>
+            <div class="pronto-card__name">Emagrecimento</div>
+            <div class="pronto-card__freq">Queima de gordura acelerada</div>
+            <button class="btn btn-primary" onclick="alert('Em breve!')">Ver treino</button>
+          </div>
+        </div>
+        <div class="pronto-card">
+          <img class="pronto-card__bg" src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80" alt="Iniciante" />
+          <div class="pronto-card__overlay"></div>
+          <div class="pronto-card__content">
+            <div class="pronto-card__tag">3x por semana</div>
+            <div class="pronto-card__name">Iniciante</div>
+            <div class="pronto-card__freq">Para quem está começando</div>
+            <button class="btn btn-primary" onclick="alert('Em breve!')">Ver treino</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="historico">
+      <div class="section-header">
+        <h2 class="section-title">Histórico de treino</h2>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <table class="historico-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Treino</th>
+              <th>Duração</th>
+            </tr>
+          </thead>
+          <tbody id="historico-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">RODAPÉ</footer>
+
+  <script type="module" src="js/inicio.js"></script>
+</body>
+</html>

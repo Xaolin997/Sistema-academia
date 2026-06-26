@@ -1,0 +1,316 @@
+.hero {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: .35;
+  filter: grayscale(.3);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.85) 45%, transparent 100%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  padding: 36px 40px;
+  max-width: 500px;
+}
+
+.hero__eyebrow {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  color: var(--clr-accent);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  line-height: 1;
+  letter-spacing: .03em;
+  color: var(--clr-white);
+  margin-bottom: 10px;
+}
+
+.hero__title em {
+  color: var(--clr-accent);
+  font-style: normal;
+}
+
+.hero__sub {
+  font-size: .88rem;
+  color: rgba(255,255,255,.65);
+  margin-bottom: 22px;
+}
+
+.treinos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.treino-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  transition: var(--transition);
+}
+.treino-card:hover { border-color: #3a3a3a; }
+.treino-card:empty::after { content: "Nenhum treino"; color: var(--clr-muted); font-size: .82rem; }
+
+.treino-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.treino-card__icon {
+  width: 42px;
+  height: 42px;
+  background: rgba(244,160,28,.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-accent);
+  flex-shrink: 0;
+}
+
+.treino-card__info { flex: 1; min-width: 0; }
+.treino-card__label {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: .04em;
+  color: var(--clr-white);
+}
+.treino-card__desc { font-size: .77rem; color: var(--clr-muted); text-transform: capitalize; }
+
+.treino-card__actions { display: flex; gap: 8px; }
+.treino-card__actions .btn { flex: 1; justify-content: center; padding: 8px 10px; font-size: .78rem; }
+
+.treinos-empty {
+  background: var(--clr-surface);
+  border: 1px dashed var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  text-align: center;
+  color: var(--clr-muted);
+  grid-column: 1/-1;
+}
+.treinos-empty p { margin-bottom: 16px; }
+
+.calendario { margin-bottom: 40px; }
+
+.calendario-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.cal-day {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: 16px 12px;
+  text-align: center;
+  transition: var(--transition);
+}
+.cal-day.today { border-color: var(--clr-accent); background: rgba(244,160,28,.05); }
+.cal-day.descanso { opacity: .5; }
+
+.cal-day__name {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+  margin-bottom: 6px;
+}
+.cal-day.today .cal-day__name { color: var(--clr-accent); }
+
+.cal-day__treino {
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--clr-text);
+}
+
+.calendario-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.prontos { margin-bottom: 40px; }
+
+.prontos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.pronto-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 160px;
+  cursor: pointer;
+}
+
+.pronto-card__bg {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform .4s ease;
+  filter: grayscale(.2);
+}
+.pronto-card:hover .pronto-card__bg { transform: scale(1.06); }
+
+.pronto-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.2) 100%);
+}
+
+.pronto-card__content {
+  position: relative;
+  z-index: 2;
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.pronto-card__tag {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  margin-bottom: 4px;
+}
+
+.pronto-card__name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: .04em;
+  color: var(--clr-white);
+  margin-bottom: 2px;
+}
+
+.pronto-card__freq {
+  font-size: .75rem;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 12px;
+}
+
+.pronto-card .btn { padding: 6px 14px; font-size: .75rem; }
+
+.historico { margin-bottom: 24px; }
+
+.historico-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.historico-table th {
+  text-align: left;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.historico-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--clr-border);
+  font-size: .87rem;
+  color: var(--clr-text);
+}
+
+.historico-table tr:last-child td { border-bottom: none; }
+.historico-table tr:hover td { background: rgba(255,255,255,.02); }
+
+.historico-table .duracao { color: var(--clr-accent); font-weight: 600; }
+.historico-empty { padding: 24px; text-align: center; color: var(--clr-muted); font-size: .87rem; }
+
+.motivacional {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 100%;
+  min-height: 300px;
+  background: var(--clr-surface);
+  flex-shrink: 0;
+  width: 200px;
+}
+
+.motivacional__bg {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(.8) brightness(.6);
+}
+
+.motivacional__text {
+  position: relative;
+  z-index: 2;
+  padding: 24px 20px;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  line-height: 1;
+  letter-spacing: .05em;
+  color: var(--clr-white);
+}
+
+.destaque-row {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.destaque-exercicios {
+  flex: 1;
+  min-width: 0;
+}
+
+.destaque-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 1100px) {
+  .treinos-grid { grid-template-columns: repeat(2, 1fr); }
+  .destaque-grid { grid-template-columns: repeat(3, 1fr); }
+  .prontos-grid { grid-template-columns: repeat(2, 1fr); }
+  .calendario-grid { grid-template-columns: repeat(3, 1fr); }
+}
